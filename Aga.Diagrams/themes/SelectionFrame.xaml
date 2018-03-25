@@ -1,0 +1,60 @@
+<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:d="clr-namespace:Aga.Diagrams"
+    xmlns:c="clr-namespace:Aga.Diagrams.Controls">
+
+	<ResourceDictionary.MergedDictionaries>
+		<ResourceDictionary Source="/Aga.Diagrams;component/Themes/Shared.xaml" />
+	</ResourceDictionary.MergedDictionaries>
+
+	<Style TargetType="{x:Type c:SelectionFrame}">
+		<Setter Property="SnapsToDevicePixels" Value="True"/>
+		<Setter Property="Template">
+			<Setter.Value>
+				<ControlTemplate>
+					<Grid>
+						<Grid Visibility="Hidden" x:Name="PART_ResizeFrame">
+							<c:DragThumb Height="3" Cursor="SizeNS" Margin="0 -1 0 0"  Kind="Top"
+			               VerticalAlignment="Top" HorizontalAlignment="Stretch" Template="{StaticResource ThumbHLineTemplate}"/>
+							<c:DragThumb Width="3" Cursor="SizeWE" Margin="-1 0 0 0"  Kind="Left"
+						   VerticalAlignment="Stretch" HorizontalAlignment="Left" Template="{StaticResource ThumbVLineTemplate}"/>
+							<c:DragThumb Width="3" Cursor="SizeWE" Margin="0 0 -1 0" Kind="Right"
+							VerticalAlignment="Stretch" HorizontalAlignment="Right" Template="{StaticResource ThumbVLineTemplate}"/>
+							<c:DragThumb Height="3" Cursor="SizeNS" Margin="0 0 0 -1" Kind="Bottom"
+							VerticalAlignment="Bottom" HorizontalAlignment="Stretch" Template="{StaticResource ThumbHLineTemplate}"/>
+							<c:DragThumb Width="7" Height="7" Cursor="SizeNWSE" Margin="-3 -3 0 0" Kind="TopLeft"
+							VerticalAlignment="Top" HorizontalAlignment="Left" Template="{StaticResource ThumbRectTemplate}"/>
+							<c:DragThumb Width="7" Height="7" Cursor="SizeNESW" Margin="0 -3 -3 0"  Kind="TopRight"
+							VerticalAlignment="Top" HorizontalAlignment="Right" Template="{StaticResource ThumbRectTemplate}"/>
+							<c:DragThumb Width="7" Height="7" Cursor="SizeNESW" Margin="-3 0 0 -3"  Kind="BottomLeft"
+							VerticalAlignment="Bottom" HorizontalAlignment="Left" Template="{StaticResource ThumbRectTemplate}"/>
+							<c:DragThumb Width="7" Height="7" Cursor="SizeNWSE" Margin="0 0 -3 -3"  Kind="BottomRight"
+							VerticalAlignment="Bottom" HorizontalAlignment="Right" Template="{StaticResource ThumbRectTemplate}"/>
+						</Grid>
+						<Control Visibility="Hidden" x:Name="PART_SelectionFrame" Template="{StaticResource SelectionTemplate}">
+						</Control>
+					</Grid>
+
+					<ControlTemplate.Triggers>
+						<MultiDataTrigger>
+							<MultiDataTrigger.Conditions>
+								<Condition Value="True" Binding="{Binding IsSelected}" />
+								<Condition  Value="True" Binding="{Binding CanResize}" />
+							</MultiDataTrigger.Conditions>
+							<Setter TargetName="PART_ResizeFrame" Property="Visibility" Value="Visible"/>
+						</MultiDataTrigger>
+						<MultiDataTrigger>
+							<MultiDataTrigger.Conditions>
+								<Condition Value="True" Binding="{Binding IsSelected}" />
+								<Condition  Value="False" Binding="{Binding CanResize}" />
+							</MultiDataTrigger.Conditions>
+							<Setter TargetName="PART_SelectionFrame" Property="Visibility" Value="Visible"/>
+						</MultiDataTrigger>
+					</ControlTemplate.Triggers>
+
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+	</Style>
+</ResourceDictionary>

@@ -1,0 +1,17 @@
+<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:d="clr-namespace:Aga.Diagrams"
+    xmlns:c="clr-namespace:Aga.Diagrams.Controls">
+
+	<ResourceDictionary.MergedDictionaries>
+		<ResourceDictionary Source="/Aga.Diagrams;component/Themes/DiagramView.xaml" />
+		<ResourceDictionary Source="/Aga.Diagrams;component/Themes/Node.xaml" />
+		<ResourceDictionary Source="/Aga.Diagrams;component/Themes/LinkBase.xaml" />
+		<ResourceDictionary Source="/Aga.Diagrams;component/Themes/SelectionFrame.xaml" />
+		<ResourceDictionary Source="/Aga.Diagrams;component/Themes/RelinkControl.xaml" />
+		<ResourceDictionary Source="/Aga.Diagrams;component/Themes/EllipsePort.xaml" />
+		<ResourceDictionary Source="/Aga.Diagrams;component/Themes/RectPort.xaml" />
+	</ResourceDictionary.MergedDictionaries>
+
+</ResourceDictionary>

@@ -1,0 +1,48 @@
+<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:d="clr-namespace:Aga.Diagrams"
+    xmlns:c="clr-namespace:Aga.Diagrams.Controls">
+	
+	<BooleanToVisibilityConverter x:Key="VisibilityConverter"/>
+
+	<ControlTemplate x:Key="SelectionTemplate">
+		<Border x:Name="Border" BorderBrush="LightGreen" BorderThickness="2"/>
+		<ControlTemplate.Triggers>
+			<DataTrigger Value="True" Binding="{Binding IsPrimarySelection}">
+				<Setter TargetName="Border" Property="BorderBrush" Value="Magenta"/>
+			</DataTrigger>
+		</ControlTemplate.Triggers>
+	</ControlTemplate>
+
+	<ControlTemplate x:Key="ThumbRectTemplate">
+		<Border x:Name="Border" BorderBrush="Black" BorderThickness="1" Background="LightGreen"/>
+		<ControlTemplate.Triggers>
+			<DataTrigger Value="True" Binding="{Binding IsPrimarySelection}">
+				<Setter TargetName="Border" Property="Background" Value="Magenta"/>
+			</DataTrigger>
+		</ControlTemplate.Triggers>
+	</ControlTemplate>
+
+	<ControlTemplate x:Key="ThumbVLineTemplate">
+		<Grid>
+			<Path x:Name="Border" Stroke="LightGreen" StrokeThickness="2" Data="M 0,0 0,1" Stretch="Fill" />
+		</Grid>
+		<ControlTemplate.Triggers>
+			<DataTrigger Value="True" Binding="{Binding IsPrimarySelection}">
+				<Setter TargetName="Border" Property="Stroke" Value="Magenta"/>
+			</DataTrigger>
+		</ControlTemplate.Triggers>
+	</ControlTemplate>
+
+	<ControlTemplate x:Key="ThumbHLineTemplate">
+		<Grid>
+			<Path x:Name="Border" Stroke="LightGreen" StrokeThickness="2" Data="M 0,0 1,0" Stretch="Fill" />
+		</Grid>
+		<ControlTemplate.Triggers>
+			<DataTrigger Value="True" Binding="{Binding IsPrimarySelection}">
+				<Setter TargetName="Border" Property="Stroke" Value="Magenta"/>
+			</DataTrigger>
+		</ControlTemplate.Triggers>
+	</ControlTemplate>
+</ResourceDictionary>

@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RuleSet Name="Migrated rules for Aga.Diagrams.ruleset" Description="This rule set was created from the CodeAnalysisRules property for the &quot;Debug (Any CPU)&quot; configuration in project &quot;J:\常用代码\WPF Codes\WpfDiagrams\Aga.Diagrams\Aga.Diagrams.csproj&quot;." ToolsVersion="10.0">
+  <IncludeAll Action="Warning" />
+  <Rules AnalyzerId="Microsoft.Analyzers.ManagedCodeAnalysis" RuleNamespace="Microsoft.Rules.Managed">
+    <Rule Id="CA1020" Action="None" />
+    <Rule Id="CA1024" Action="None" />
+    <Rule Id="CA1702" Action="None" />
+    <Rule Id="CA1710" Action="None" />
+    <Rule Id="CA1711" Action="None" />
+    <Rule Id="CA1800" Action="None" />
+    <Rule Id="CA1810" Action="None" />
+    <Rule Id="CA1819" Action="None" />
+    <Rule Id="CA1822" Action="None" />
+    <Rule Id="CA1824" Action="None" />
+    <Rule Id="CA2214" Action="None" />
+  </Rules>
+</RuleSet>

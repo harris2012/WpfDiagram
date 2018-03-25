@@ -1,0 +1,53 @@
+<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:d="clr-namespace:Aga.Diagrams"
+    xmlns:c="clr-namespace:Aga.Diagrams.Controls">
+
+	<ResourceDictionary.MergedDictionaries>
+		<ResourceDictionary Source="/Aga.Diagrams;component/Themes/Shared.xaml" />
+	</ResourceDictionary.MergedDictionaries>
+
+	<Style TargetType="{x:Type c:LinkBase}">
+		<Setter Property="SnapsToDevicePixels" Value="True"/>
+		<Setter Property="Canvas.ZIndex" Value="-1"/>
+		<Setter Property="Template">
+			<Setter.Value>
+				<ControlTemplate>
+					<Canvas DataContext="{Binding RelativeSource={RelativeSource TemplatedParent}}">
+						<Path
+                          StrokeThickness="2"
+                          Stroke="{Binding Brush}"
+                          Data="{Binding PathGeometry}">
+						</Path>
+						<Canvas Visibility="{Binding StartCap, Converter={StaticResource VisibilityConverter}}"
+							  Canvas.Left="{Binding StartPoint.X}"
+							  Canvas.Top="{Binding StartPoint.Y}">
+							<Path Fill="{Binding Brush}" Data="M0,0 L16,-4 L16,4 Z">
+							</Path>
+							<Canvas.LayoutTransform>
+								<RotateTransform Angle="{Binding StartCapAngle}"/>
+							</Canvas.LayoutTransform>
+						</Canvas>
+						<Canvas Visibility="{Binding EndCap, Converter={StaticResource VisibilityConverter}}"
+							  Canvas.Left="{Binding EndPoint.X}"
+							  Canvas.Top="{Binding EndPoint.Y}">
+							<Path Fill="{Binding Brush}" Data="M0,0 L-16,-4 L-16,4 Z">
+							</Path>
+							<Canvas.LayoutTransform>
+								<RotateTransform Angle="{Binding EndCapAngle}"/>
+							</Canvas.LayoutTransform>
+						</Canvas>
+						<Canvas Canvas.Left="{Binding LabelPosition.X}" 
+								Canvas.Top="{Binding LabelPosition.Y}" 
+								Width="1" Height="1">
+							<TextBlock Margin="-1000" Background="White"
+									   Text="{Binding Label}" 
+									   VerticalAlignment="Center" HorizontalAlignment="Center"/>
+						</Canvas>
+					</Canvas>
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+	</Style>
+</ResourceDictionary>

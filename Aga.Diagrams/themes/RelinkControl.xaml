@@ -1,0 +1,58 @@
+<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:d="clr-namespace:Aga.Diagrams"
+    xmlns:c="clr-namespace:Aga.Diagrams.Controls">
+
+	<ResourceDictionary.MergedDictionaries>
+		<ResourceDictionary Source="/Aga.Diagrams;component/Themes/Shared.xaml" />
+	</ResourceDictionary.MergedDictionaries>
+
+	<Style TargetType="{x:Type c:RelinkControl}">
+		<Setter Property="SnapsToDevicePixels" Value="True"/>
+		<Setter Property="Template">
+			<Setter.Value>
+				<ControlTemplate>
+					<Grid>
+
+						<Canvas Visibility="Hidden" x:Name="PART_RelinkDecorator">
+							<c:LinkThumb Width="7" Height="7" Cursor="Cross" Margin="-3 -3 0 0" Kind="Source"
+								Template="{StaticResource ThumbRectTemplate}"
+								Canvas.Left="{Binding StartPoint.X}" Canvas.Top="{Binding StartPoint.Y}"/>
+							<c:LinkThumb Width="7" Height="7" Cursor="Cross" Margin="-3 -3 0 0" Kind="Target"
+								Template="{StaticResource ThumbRectTemplate}"
+								Canvas.Left="{Binding EndPoint.X}" Canvas.Top="{Binding EndPoint.Y}"/>
+						</Canvas>
+						<Canvas Visibility="Hidden" x:Name="PART_SelectionDecorator">
+							<Control Width="7" Height="7" Margin="-3 -3 0 0"
+								Template="{StaticResource ThumbRectTemplate}"
+								Canvas.Left="{Binding StartPoint.X}" Canvas.Top="{Binding StartPoint.Y}"/>
+							<Control Width="7" Height="7" Margin="-3 -3 0 0"
+								Template="{StaticResource ThumbRectTemplate}"
+								Canvas.Left="{Binding EndPoint.X}" Canvas.Top="{Binding EndPoint.Y}"/>
+						</Canvas>
+
+					</Grid>
+
+					<ControlTemplate.Triggers>
+						<MultiDataTrigger>
+							<MultiDataTrigger.Conditions>
+								<Condition Value="True" Binding="{Binding IsSelected}" />
+								<Condition  Value="True" Binding="{Binding CanRelink}" />
+							</MultiDataTrigger.Conditions>
+							<Setter TargetName="PART_RelinkDecorator" Property="Visibility" Value="Visible"/>
+						</MultiDataTrigger>
+						<MultiDataTrigger>
+							<MultiDataTrigger.Conditions>
+								<Condition Value="True" Binding="{Binding IsSelected}" />
+								<Condition  Value="False" Binding="{Binding CanRelink}" />
+							</MultiDataTrigger.Conditions>
+							<Setter TargetName="PART_SelectionDecorator" Property="Visibility" Value="Visible"/>
+						</MultiDataTrigger>
+					</ControlTemplate.Triggers>
+
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+	</Style>
+</ResourceDictionary>

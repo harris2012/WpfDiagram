@@ -1,0 +1,21 @@
+<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:d="clr-namespace:Aga.Diagrams"
+    xmlns:c="clr-namespace:Aga.Diagrams.Controls">
+
+	<ResourceDictionary.MergedDictionaries>
+		<ResourceDictionary Source="/Aga.Diagrams;component/Themes/Shared.xaml" />
+	</ResourceDictionary.MergedDictionaries>
+
+	<Style TargetType="{x:Type c:RectPort}">
+		<Setter Property="SnapsToDevicePixels" Value="true"/>
+		<Setter Property="Template">
+			<Setter.Value>
+				<ControlTemplate>
+					<Rectangle Fill="LightBlue" StrokeThickness="1" Stroke="Black"/>
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+	</Style>
+</ResourceDictionary>
